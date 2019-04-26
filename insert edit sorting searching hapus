@@ -1,0 +1,149 @@
+#include <iostream>
+#include<conio.h>
+#include<stdlib.h>
+#include<string.h>
+
+
+using namespace::std;
+struct data{
+int nik;
+char nama[20],desa[20],kec[20];};
+
+data input[100];
+data sorti;
+string namcar[10],cari, prog;
+int i,a,n,indeks;
+bool status=false;
+
+
+void data(){
+cout<<"     Data Inputan"<<endl<<endl;
+for(i=0;i<a;i++){
+    cout<<"         Data ke-"<<i+1<<endl<<endl;
+    cout<<" NIK       :" <<input[i].nik<<endl;
+    cout<<" NAMA      :" <<input[i].nama<<endl;
+    cout<<" DESA      :" <<input[i].desa<<endl;
+    cout<<" KECAMATAN :" <<input[i].kec<<endl<<endl;
+    }
+}
+
+void sorting(){
+    int b;
+ for(i=0;i<n;i++){
+        for(b=0;b<n-1;b++){
+
+        if(input[b].nik>input[b+1].nik)
+    {
+        sorti.nik=input[b].nik;
+        input[b].nik=input[b+1].nik;
+        input[b+1].nik=sorti.nik;
+
+        strcpy(sorti.nama,input[b].nama);
+        strcpy(input[b].nama,input[b+1].nama);
+        strcpy(input[b+1].nama,sorti.nama);
+
+        strcpy(sorti.desa,input[b].desa);
+        strcpy(input[b].desa,input[b+1].desa);
+        strcpy(input[b+1].desa,sorti.desa);
+
+        strcpy(sorti.kec,input[b].kec);
+        strcpy(input[b].kec,input[b+1].kec);
+        strcpy(input[b+1].kec,sorti.kec);
+
+}   }   }
+i=b;
+data();
+}
+
+void edit(){
+int y,l;
+cout<<"Data Yang Akan Diedit :"<<endl;
+cout<<"Data Ke-"; cin>>y;
+l=y-1;
+cout<<" NIM       : ";cin>>input[l].nik;
+cout<<" Nama      : ";cin>>input[l].nama;
+cout<<" DESA      : ";cin>>input[l].desa;
+cout<<" KECAMATAN : ";cin>>input[l].kec; cout<<endl;
+
+}
+
+void hapus(){
+int x,y;
+cout<<" Data Yang Akan Dihapus :"<<endl;
+cout<<" Data ke- : ";cin>>x;
+
+ y=x-1;
+ a--;
+ for(int i=y;i<a;i++)
+ {input[i]=input[i+1];}
+ cout<<endl<<"Data ke-"<<x<<" Telah Terhapus "<<endl;
+}
+
+void searching(){
+cout<<"Nama Data Dicari : ";cin>>cari;
+for(int i=1 ;i<=n;i++){
+    if(cari==namcar[i]){
+        status=true;
+        indeks=i;
+    }}
+
+if(status){
+    cout<<endl<<"Data Yang Ditemukan :"<<endl;
+    cout<<" NIK       : "<<input [indeks].nik<<endl;
+    cout<<" NAMA      : "<<input [indeks].nama<<endl;
+    cout<<" DESA      : "<<input [indeks].desa<<endl;
+    cout<<" KECAMATAN : "<<input [indeks].kec<<endl;
+    }
+else    {cout<<"Tidak Ditemukan Data";}
+}
+
+int main(){
+cout<<" Jumlah Data Yang Akan di Input : ";
+cin>>n;cout<<endl;
+for (i=0;i<n;i++){
+    cout<<" Data ke-"<<i+1<<endl;
+    cout<<" NIK       :" ;cin>>input[a].nik;
+    cout<<" NAMA      :" ;cin>>input[a].nama;
+    namcar[i+1-1]=input[a].nama;
+    cout<<" DESA      :" ;cin>>input[a].desa;
+    cout<<" KECAMATAN :" ;cin>>input[a].kec;
+    a++;
+    }
+cout<<"Jumlah Inputan Data Telah Maksimal"<<endl;
+cout<<"     TEKAN SALAH SATU TOMBOL";
+    getch();
+    system ("CLS");
+ulang :
+cout<<"PILIHAN PROGRAM"<<endl;
+cout<<"1. Melihat Data"<<endl;
+cout<<"2. Mengedit Data"<<endl;
+cout<<"3. Mengurutkan Data"<<endl;
+cout<<"4. Mencari Data"<<endl;
+cout<<"5. Menghapus Data"<<endl<<endl;
+cout<<"PILIHAN PROGRAM :"; cin>>prog;
+system ("CLS");
+if (prog=="1"){
+                data();getch();system ("CLS");goto ulang;}
+else if (prog=="2"){
+                data();getch();system ("CLS");edit();system ("CLS");cout<<"   DATA SETELAH DI EDIT"<<endl<<endl;
+                data(); getch();system ("CLS");goto ulang;}
+else if (prog=="3"){
+                data();getch();system ("CLS");cout<<"   DATA SETELAH DI SORTING"<<endl<<endl;
+                sorting();getch();system ("CLS");goto ulang;}
+else if (prog=="4"){
+                data();getch();system ("CLS");searching();getch();system ("CLS");goto ulang;}
+else if (prog=="5"){
+                data();hapus();system ("CLS");cout<<"   DATA SETELAH DI HAPUS"<<endl<<endl;
+                data();getch();system ("CLS");goto ulang;}
+else {cout<<"Anda Akan Keluar Program"<<endl;
+      cout<<" YA               TIDAK"<<endl;
+string out;
+      cout<<"=>";cin>>out;
+      if (out=="tidak"||out=="Tidak"||out=="TIDAK"){system ("CLS");goto ulang;}
+}
+system ("CLS");
+cout<<endl<<endl<<endl<<"     PROGRAM TELAH BERAKHIR"<<endl<<endl<<endl;
+lagi:
+cout<<"Process returned 0 (0x0)   execution time : 9.001 s"<<endl<<"Press any key to continue."<<endl<<endl<<endl;getch();goto lagi;
+getch();
+}
